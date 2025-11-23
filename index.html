@@ -144,7 +144,7 @@
         <p class="subtitle">Share an image using the native share functionality</p>
 
         <div class="image-container">
-            <img id="shareImage" src="placeholder-image.svg" alt="Image to share">
+            <img id="shareImage" src="placeholder-image.svg" alt="Blue rectangular placeholder image with white text saying Share Me">
         </div>
 
         <button id="shareButton" class="share-button">📤 Share Image</button>
@@ -188,8 +188,9 @@
                 const response = await fetch(imageElement.src);
                 const blob = await response.blob();
                 
-                // Create a File from the blob
-                const file = new File([blob], 'shared-image.svg', { type: blob.type });
+                // Create a File from the blob with appropriate extension
+                const extension = blob.type.split('/')[1] || 'png';
+                const file = new File([blob], `shared-image.${extension}`, { type: blob.type });
 
                 // Check if the browser can share files
                 if (navigator.canShare && navigator.canShare({ files: [file] })) {
