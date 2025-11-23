@@ -7,15 +7,15 @@ const input = document.getElementById("files");
 const output = document.getElementById("output");
 
 document.getElementById("share").addEventListener("click", async () => {
-  const blob = await fetch('13.jpg').then(res=>res.blob());
-  const file = new File([blob], 'image.jpg', { type: blob.type })
-
-  const blob2 = await fetch('16.jpg').then(res=>res.blob());
-  const file2 = new File([blob2], 'image2.jpg', { type: blob2.type })
-  
   try {
     await navigator.clipboard.writeText('Some Text To Use As Caption')
-
+  
+    const blob = await fetch('13.jpg').then(res=>res.blob());
+    const file = new File([blob], 'image.jpg', { type: blob.type })
+  
+    const blob2 = await fetch('16.jpg').then(res=>res.blob());
+    const file2 = new File([blob2], 'image2.jpg', { type: blob2.type })
+  
     await navigator.share({
       files: [file, file2],
       title: "Images",
