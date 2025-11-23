@@ -1,6 +1,7 @@
 <button id="share">SHARE</button>
 <img src="13.jpg" style="max-width: 200px"/>
 <img src="16.jpg" style="max-width: 200px"/>
+<video src="reel.mp4" style="max-width: 200px"/>
 
 <script>
 const input = document.getElementById("files");
@@ -15,9 +16,12 @@ document.getElementById("share").addEventListener("click", async () => {
   
     const blob2 = await fetch('16.jpg').then(res=>res.blob());
     const file2 = new File([blob2], 'image2.jpg', { type: blob2.type })
+
+    const reel = await fetch('reel.mp4').then(res=>res.blob());
+    const reelFile = new File([reel], 'reel.mp4', { type: reel.type })
   
     await navigator.share({
-      files: [file, file2],
+      files: [file, file2, reelFile],
       title: "Images",
       text: "Beautiful image",
     });
