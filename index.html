@@ -1,5 +1,6 @@
-<img src="13.jpg"/>
 <button id="share">SHARE</button>
+<img src="13.jpg" style="max-width: 200px"/>
+<img src="16.jpg" style="max-width: 200px"/>
 
 <script>
 const input = document.getElementById("files");
@@ -10,7 +11,7 @@ document.getElementById("share").addEventListener("click", async () => {
   const file = new File([blob], 'image.jpg', { type: blob.type })
 
   const blob2 = await fetch('16.jpg').then(res=>res.blob());
-  const file2 = new File([blob], 'image.jpg', { type: blob.type })
+  const file2 = new File([blob], 'image2.jpg', { type: blob2.type })
   
   try {
     await navigator.share({
