@@ -1,0 +1,20 @@
+<img src="/image.png"/>
+<button id="share">SHARE</button>
+
+<script>
+const input = document.getElementById("files");
+const output = document.getElementById("output");
+
+document.getElementById("share").addEventListener("click", async () => {
+  const blob = await fetch('/image.png').then(res=>res.blob());
+  try {
+    await navigator.share({
+      files: [blob],
+      title: "Images",
+      text: "Beautiful image",
+    });
+  } catch (error) {
+    alert(error.message)
+  }
+});
+</script>
