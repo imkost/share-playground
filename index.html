@@ -7,9 +7,10 @@ const output = document.getElementById("output");
 
 document.getElementById("share").addEventListener("click", async () => {
   const blob = await fetch('13.jpg').then(res=>res.blob());
+  const file = new File([blob], 'image.jpg', { type: blob.type })
   try {
     await navigator.share({
-      files: [blob],
+      files: [file],
       title: "Images",
       text: "Beautiful image",
     });
