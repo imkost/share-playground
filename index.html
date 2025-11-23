@@ -11,7 +11,7 @@ document.getElementById("share").addEventListener("click", async () => {
   const file = new File([blob], 'image.jpg', { type: blob.type })
 
   const blob2 = await fetch('16.jpg').then(res=>res.blob());
-  const file2 = new File([blob], 'image2.jpg', { type: blob2.type })
+  const file2 = new File([blob2], 'image2.jpg', { type: blob2.type })
   
   try {
     await navigator.share({
